@@ -335,7 +335,7 @@ button:focus {
   gap: 20px;
   align-items: center;
   font-family: var(--accent-font);
-  background-color: var(--bg-color);
+  background-color: transparent;
   margin-bottom: 30px;
 }
 
@@ -343,6 +343,8 @@ button:focus {
   padding: 30px;
   border: 2px solid var(--accent-color);
   min-width: fit-content;
+  background-color: var(--bg-color);
+
 }
 
 .dialog::backdrop {
@@ -353,6 +355,7 @@ button:focus {
   text-transform: uppercase;
   font-size: 14px;
   line-height: 150%;
+  color: var(--accent-color);
 }
 
 .button-dialog {
