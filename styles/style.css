@@ -13,4 +13,353 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--main-font);
+  background-color: var(--background-color);
+  color: var(--font-color);
+  background-image: var(--bg-gradient);
+  background-size: cover;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+@supports (font-variation-settings: normal) {
+  .page {
+      font-weight: var(--main-font-weight);
+  }
+} 
+
+.header {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  display: block;
+  border: 2px solid var(--accent-color);
+  font-family: var(--accent-font);
+  text-align: center;
+  justify-items: center;
+  background-color: var(--bg-color);
+}
+
+.header-titles {
+  margin-top: clamp(7.5rem, 7.1479rem + 1.5023vw, 8.5rem);
+  margin-left: clamp(0.875rem, -1.4688rem + 10vw, 7.53125rem);
+  margin-right: clamp(0.875rem, -1.4688rem + 10vw, 7.53125rem);
+}
+
+.header-title {
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  margin-bottom: 20px;
+}
+
+.header-subtitle {
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+.theme-menu {
+  display: flex;
+  justify-content: center;
+}
+
+.theme-menu__list {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  gap: 14px;
+}
+
+a:focus,
+button:focus {
+  outline: none;
+  border: none;
+}
+
+.svg-like:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: -1.5px;
+  transition: 0.3s ease;
+}
+
+.theme-menu__button:focus-visible {
+  opacity: 0.6;
+  transition: 0.3s ease;
+}
+
+.theme-menu__button::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 0%;
+  background-color: var(--accent-color);
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.theme-menu__button:focus-visible::after {
+  width: 100%;
+  background-color: var(--accent-color);
+}
+
+.theme-menu__button:disabled {
+  pointer-events: none;
+  opacity: 60%;
+}
+
+.theme-menu__button:disabled::before {
+  content: '▶';
+  position: absolute;
+  font-family: var(--accent-font);
+  left: -18px;
+  animation: arrow 0.5s ease-in-out infinite alternate;
+}
+
+.theme-menu__button:hover {
+  opacity: 60%;
+  transition: 0.3s ease;
+}
+
+.theme-menu__button {
+  position: relative;
+  display: block;
+  border: none;
+  color: var(--menu-color);
+  font-family: var(--accent-font);
+  font-weight: 400;
+  font-size: 14px;
+  background-color: transparent;
+  cursor: pointer;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.like-button:focus-visible,
+.button-save:focus-visible {
+  box-shadow: 2px 2px 0 var(--accent-color);
+  border: 2px solid var(--accent-color);
+  transition: 0.5s ease;
+}
+
+.like-button,
+.button-save {
+  position: relative;
+  overflow: hidden;
+}
+
+.like-button::before,
+.button-save::before {
+  content: '';
+  position: absolute;
+  translate: -100%;
+  inset: 0;
+  background-color: var(--accent-color);
+  transition: translate 0.5s ease-in-out;
+}
+
+.like-button:hover::before,
+.button-save:hover::before {
+  translate: 0%;
+}
+
+.button__text {
+  color: var(--button-color);
+  z-index: 1;
+  mix-blend-mode: difference;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+}
+
+.content-section {
+  display: block;
+  max-width: clamp(23.4375rem, 16.3732rem + 30.1408vw, 43.5rem);
+  height: fit-content;
+  border: 2px solid var(--accent-color);
+  background-color: var(--bg-color);
+}
+
+.description {
+  margin: 25px;
+  font-family: var(--main-font);
+  font-size: 18px;
+  line-height: 117%;
+}
+
+.section-header {
+  font-family: var(--main-font);
+  font-size: 18px;
+  font-weight: var(--bold-font-weight);
+  line-height: 121%;
+  padding: 3px clamp(0.625rem, 0.3169rem + 1.3146vw, 1.5rem) 3px 10px;
+  border-bottom: 2px solid var(--accent-color);
+}
+
+.main-text {
+  margin-bottom: 27px;
+}
+
+.illustration {
+  position: relative;
+  border-bottom: 2px solid var(--accent-color);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text-element {
+  position: absolute;
+  right: clamp(0.8125rem, 0.5484rem + 1.1268vw, 1.5625rem);
+  top: 25px;
+  font-family: var(--accent-font);
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  opacity: 0.5;
+  text-shadow: 0 0 2px var(--bg-color);
+  mix-blend-mode: hard-light;
+}
+
+@supports((text-stroke: 1px var(--bg-color)) or (-webkit-text-stroke: 1px var(--bg-color))) {
+  .text-element {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--bg-color);
+    text-stroke: 1px var(--bg-color);
+  }
+}
+
+.section__like-button {
+  display: flex;
+  justify-content: end;
+}
+
+.card__like-button {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  margin-top: 25px;
+}
+
+.svg-like {
+  background-color: transparent;
+  border: none;
+}
+
+.like-button {
+  font-family: var(--accent-font);
+  font-size: 14px;
+  line-height: 90%;
+  font-weight: 400;
+  border: 2px solid var(--accent-color);
+  padding: 10.5px 36px;
+  background-color: transparent;
+}
+
+.sparks {
+  opacity: 0;
+}
+
+.popup__icon {
+  max-width: 40px;
+  color: var(--button-color);
+  z-index: 1;
+  mix-blend-mode: difference;
+}
+
+.button-save {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-family: var(--accent-font);
+  font-size: 14px;
+  line-height: 90%;
+  padding: 15px 21px 15px 19px;
+  border: 2px solid var(--accent-color);
+  background-color: var(--bg-color);
+  margin-bottom: 103px;
+}
+
+@media (width <= 500px) {
+  .button-save {
+    flex-direction: column;
+  }
+
+  .dialog {
+    padding: 30px 42px;
+  }
+
+  .button-dialog {
+    padding: 12.5px 114.5px;
+  }
+}
+
+.image_sepia {
+  filter: sepia(1);
+}
+
+.image_saturate {
+  filter: saturate(5)
+}
+
+.image_hue-rotate {
+  filter: hue-rotate(50deg) brightness(150%);
+}
+
+.image_grayscale {
+  filter: grayscale(40%);
+}
+
+.image_invert {
+  filter: invert(100%) brightness(60%);
+}
+
+.image_blur {
+  filter: blur(5px);
+}
+
+.image_bright {
+  filter: brightness(200%);
+}
+
+.dialog-content {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  font-family: var(--accent-font);
+  background-color: var(--bg-color);
+  margin-bottom: 30px;
+}
+
+.dialog {
+  padding: 30px;
+  border: 2px solid var(--accent-color);
+  min-width: fit-content;
+}
+
+.dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.75);
+}
+
+.dialog-text {
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+.button-dialog {
+  padding: 12.5px 132.5px;
+  margin: 0 auto;
+  border: 2px solid var(--accent-color);
+}
+
+
+
