@@ -8,7 +8,7 @@
 
 :root.theme-light {
     --main-font: 'Inter-Variable', sans-serif;
-    --accent-font: 'PressStart2P';
+    --accent-font: 'PressStart2P', fantasy;
     --main-font-weight: 400;
     --bold-font-weight: 700;
     --bg-color: #fff;
@@ -20,13 +20,13 @@
     --bg-gradient: 
         repeating-linear-gradient(
         to right,
-        #d3d3d3,
-        transparent 2px),
+        #d3d3d3 0 2px,
+        transparent 2px 4px),
         repeating-linear-gradient(
         to bottom,
-        #d3d3d3,
-        transparent 2px),
-        linear-gradient(#e7e7e7, #1a1a1a);
+        #d3d3d3 0 2px,
+        transparent 2px 4px),
+        linear-gradient(to bottom, #e7e7e7 0%, #1a1a1a 100%);
 }
 
 :root.theme-dark {
@@ -40,14 +40,14 @@
     --fill-color: #ff0000;
     --bg-gradient: 
     repeating-linear-gradient(
-    to right,
-    #000,
-    transparent 2px),
-    repeating-linear-gradient(
-    to bottom,
-    #000,
-    transparent 2px),
-    linear-gradient(#007f0c, #004306);
+        to right,
+        #000 0 2px,
+        transparent 2px 4px),
+        repeating-linear-gradient(
+        to bottom,
+        #000 0 2px,
+        transparent 2px 4px),
+        linear-gradient(to bottom, #007f0c, #004306);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -60,12 +60,12 @@
         --bg-gradient: 
         repeating-linear-gradient(
         to right,
-        #000,
-        transparent 2px),
+        #000 0 2px,
+        transparent 2px 4px),
         repeating-linear-gradient(
         to bottom,
-        #000,
-        transparent 2px),
-        linear-gradient(#007f0c, #004306);
+        #000 0 2px,
+        transparent 2px 4px),
+        linear-gradient(to bottom, #007f0c, #004306);
     }
 }

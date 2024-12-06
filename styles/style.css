@@ -18,6 +18,7 @@
   background-color: var(--background-color);
   color: var(--font-color);
   background-image: var(--bg-gradient);
+  background-attachment: fixed;
   background-size: cover;
   margin: 0 auto;
   display: flex;
@@ -31,12 +32,19 @@
   }
 } 
 
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+}
+
 .header {
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-block-start: 100px;
+  margin-block-end: 100px;
   display: block;
   border: 2px solid var(--accent-color);
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   text-align: center;
   justify-items: center;
   background-color: var(--bg-color);
@@ -68,24 +76,30 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 25px;
-  gap: 14px;
+  gap: 12px;
+  transform: translate(8px);
 }
 
-a:focus,
 button:focus {
   outline: none;
-  border: none;
+}
+
+.button:focus-visible {
+  transition: 0.3s ease;
+  box-shadow: 2px 2px 0 var(--accent-color);
+}
+
+button:hover {
+  transition: 0.3s ease;
 }
 
 .svg-like:focus-visible {
   outline: 2px solid var(--accent-color);
-  outline-offset: -1.5px;
-  transition: 0.3s ease;
+  outline-offset: -3px;
 }
 
 .theme-menu__button:focus-visible {
   opacity: 0.6;
-  transition: 0.3s ease;
 }
 
 .theme-menu__button::after {
@@ -110,14 +124,13 @@ button:focus {
 .theme-menu__button:disabled::before {
   content: '▶';
   position: absolute;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   left: -18px;
   animation: arrow 0.5s ease-in-out infinite alternate;
 }
 
 .theme-menu__button:hover {
   opacity: 60%;
-  transition: 0.3s ease;
 }
 
 .theme-menu__button {
@@ -125,7 +138,7 @@ button:focus {
   display: block;
   border: none;
   color: var(--menu-color);
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-weight: 400;
   font-size: 14px;
   background-color: transparent;
@@ -134,21 +147,14 @@ button:focus {
   line-height: 1;
 }
 
-.like-button:focus-visible,
-.button-save:focus-visible {
-  box-shadow: 2px 2px 0 var(--accent-color);
-  border: 2px solid var(--accent-color);
-  transition: 0.5s ease;
-}
-
-.like-button,
-.button-save {
+.button {
   position: relative;
   overflow: hidden;
+  border: 2px solid var(--accent-color);
+  background-color: transparent;
 }
 
-.like-button::before,
-.button-save::before {
+.button::before {
   content: '';
   position: absolute;
   translate: -100%;
@@ -157,8 +163,7 @@ button:focus {
   transition: translate 0.5s ease-in-out;
 }
 
-.like-button:hover::before,
-.button-save:hover::before {
+.button:hover::before {
   translate: 0%;
 }
 
@@ -166,6 +171,11 @@ button:focus {
   color: var(--button-color);
   z-index: 1;
   mix-blend-mode: difference;
+  font-family: var(--accent-font), fantasy;
+  font-size: 14px;
+  line-height: 90%;
+  font-weight: 400;
+
 }
 
 .content {
@@ -178,16 +188,12 @@ button:focus {
 .content-section {
   display: block;
   max-width: clamp(23.4375rem, 16.3732rem + 30.1408vw, 43.5rem);
-  height: fit-content;
   border: 2px solid var(--accent-color);
   background-color: var(--bg-color);
 }
 
 .description {
   margin: 25px;
-  font-family: var(--main-font), sans-serif;
-  font-variation-settings: 'wght' var(--main-font-weight), 'wdth' 117, 'opsz' 0;
-  font-size: 18px;
 }
 
 .section-header {
@@ -198,12 +204,22 @@ button:focus {
   border-bottom: 2px solid var(--accent-color);
 }
 
-.main-text {
-  margin-bottom: 27px;
+.section-text {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+}
+
+.text {
+  font-family: var(--main-font), sans-serif;
+  font-size: 18px;
+  font-variation-settings: 'wght' var(--main-font-weight);
+  line-height: 117%;
 }
 
 .illustration {
   position: relative;
+  width: 100%;
   border-bottom: 2px solid var(--accent-color);
 }
 
@@ -212,13 +228,14 @@ button:focus {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .text-element {
   position: absolute;
   right: clamp(0.8125rem, 0.5484rem + 1.1268vw, 1.5625rem);
   top: 25px;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-weight: 400;
   letter-spacing: 0.3px;
   opacity: 0.5;
@@ -254,51 +271,36 @@ button:focus {
 }
 
 .like-button {
-  font-family: var(--accent-font);
-  font-size: 14px;
-  line-height: 90%;
-  font-weight: 400;
-  border: 2px solid var(--accent-color);
-  padding: 10.5px 36px;
-  background-color: transparent;
+  padding: 11px 35px 7px 35px;
 }
 
 .sparks {
   opacity: 0;
 }
 
-.popup__icon {
+.floppy-icon {
   max-width: 40px;
   color: var(--button-color);
   z-index: 1;
   mix-blend-mode: difference;
 }
 
+.popup__icon {
+  width: 100%;
+  color: var(--button-color);
+}
+
 .button-save {
   display: flex;
   gap: 8px;
   align-items: center;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
   line-height: 90%;
   padding: 15px 21px 15px 19px;
   border: 2px solid var(--accent-color);
   background-color: var(--bg-color);
   margin-bottom: 103px;
-}
-
-@media (width <= 500px) {
-  .button-save {
-    flex-direction: column;
-  }
-
-  .dialog {
-    padding: 30px 42px;
-  }
-
-  .button-dialog {
-    padding: 12.5px 114.5px;
-  }
 }
 
 .image_sepia {
@@ -329,29 +331,28 @@ button:focus {
   filter: brightness(200%);
 }
 
-.dialog-content {
+.dialog[open] {
   display: flex;
-  flex-direction: row;
-  gap: 20px;
-  align-items: center;
-  font-family: var(--accent-font);
-  background-color: transparent;
-  margin-bottom: 30px;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 353px;
 }
 
 .dialog {
-  padding: 30px;
-  border: 2px solid var(--accent-color);
-  min-width: fit-content;
   background-color: var(--bg-color);
-
+  outline: 2px solid var(--accent-color);
+  padding: 30px;
 }
 
-.dialog::backdrop {
-  background-color: rgb(0 0 0 / 0.75);
+.dialog-content {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  max-width: 293px;
 }
 
 .dialog-text {
+  font-family: var(--accent-font), fantasy;
   text-transform: uppercase;
   font-size: 14px;
   line-height: 150%;
@@ -359,10 +360,38 @@ button:focus {
 }
 
 .button-dialog {
-  padding: 12.5px 132.5px;
-  margin: 0 auto;
   border: 2px solid var(--accent-color);
+  text-transform: uppercase;
+  padding: 10px 134px 8px 134px;
 }
 
+.dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.75);
+}
 
+@media (width <= 500px) {
+  .button-save {
+    flex-direction: column;
+  }
 
+  .dialog[open] {
+    min-width: 341px;
+  }  
+
+  .dialog {
+    padding: 30px 42px;
+  }
+
+  .dialog-text {
+    width: 198px;
+  }
+
+  .button-dialog {
+    padding: 11px 112.5px 7px 112.5px;
+  }
+
+  .popup__icon-save {
+    width: 28px;
+    height: 28px;
+  }
+}
