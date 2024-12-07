@@ -85,12 +85,7 @@ button:focus {
 }
 
 .button:focus-visible {
-  transition: 0.3s ease;
   box-shadow: 2px 2px 0 var(--accent-color);
-}
-
-button:hover {
-  transition: 0.3s ease;
 }
 
 .svg-like:focus-visible {
@@ -145,6 +140,7 @@ button:hover {
   cursor: pointer;
   text-transform: uppercase;
   line-height: 1;
+  transition: 0.3s ease;
 }
 
 .button {
@@ -152,6 +148,7 @@ button:hover {
   overflow: hidden;
   border: 2px solid var(--accent-color);
   background-color: transparent;
+  transition: 0.3s ease;
 }
 
 .button::before {
@@ -271,7 +268,9 @@ button:hover {
 }
 
 .like-button {
-  padding: 11px 35px 7px 35px;
+  padding-top: 11px;
+  padding-bottom: 7px;
+  width: 118px;
 }
 
 .sparks {

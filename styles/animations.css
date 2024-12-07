@@ -52,17 +52,17 @@
 
 .like-icon.is-liked .core {
     fill: var(--fill-color);
-    transition: fill 0.3s;
+    transition: fill 0.3s linear;
 }
 
 .like-icon.is-liked .main-body {
     fill: var(--fill-color);
-    transition: fill 0.3s;
+    transition: fill 0.3s linear;
 }
 
 .like-icon.is-liked .contour {
     fill: var(--fill-color);
-    transition: fill 0.3s 0.06s;
+    transition: fill 0.3s 0.06s linear;
 }
 
 .like-icon.is-liked {
@@ -77,10 +77,10 @@
 
 @keyframes heart {
   0% {
-    transform: scale(1.5);
+    transform: scale(1);
   }
   100% {
-    transform: scale(1);
+    transform: scale(1.5);
   }
 }
 
